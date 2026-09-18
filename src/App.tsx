@@ -8,9 +8,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/perfil" element={<PerfilPage />} />
+        <Route path="/perfil/:id" element={<PerfilPage />} />
       </Routes>
-      <GlobalCss /> 
+      <GlobalCss />
     </BrowserRouter>
   )
 }

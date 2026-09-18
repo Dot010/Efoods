@@ -10,10 +10,12 @@ export const Container = styled.section`
   margin: 0 auto;
   padding-top: 56px;
   padding-bottom: 120px;
+
 `
 
 export const List = styled.ul<ListProps>`
   display: grid;
+  
   grid-template-columns: ${(props) =>
     props.$variant === 'perfil' ? 'repeat(3, 1fr)' : '1fr 1fr'};
   gap: ${(props) => (props.$variant === 'perfil' ? '32px' : '48px 80px')};

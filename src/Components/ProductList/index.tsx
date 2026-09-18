@@ -4,32 +4,38 @@ import { Container, List } from './styles'
 export type ProductType = {
   id: number
   title: string
-  description: string
-  image: string
+  descricao: string
+  foto: string
   category?: string
   rating?: number
   infos?: string[]
+  preco?: number
+  porcao?: string
 }
 
-type Props = {
+export type ProductListProps = {
   products: ProductType[]
+  onSelectedProduct?: (id: number) => void
   variant?: 'home' | 'perfil'
 }
 
-export const ProductList = ({ products, variant = 'home' }: Props) => {
+export const ProductList = ({ products, onSelectedProduct, variant = 'home' }: ProductListProps) => {
   return (
     <Container>
       <List $variant={variant}>
-        {products.map((item) => (
+        {products.map((produto) => (
           <Product
-            key={item.id}
-            title={item.title}
-            description={item.description}
-            image={item.image}
-            category={item.category}
-            rating={item.rating}
-            infos={item.infos}
+            key={produto.id}
+            id={produto.id}
+            title={produto.title}
+            descricao={produto.descricao}
+            foto={produto.foto}
+            rating={produto.rating}
+            infos={produto.infos}
+            preco={produto.preco}
+            porcao={produto.porcao}
             variant={variant}
+            onSelectedPrato={onSelectedProduct ? () => onSelectedProduct(produto.id) : undefined}
           />
         ))}
       </List>

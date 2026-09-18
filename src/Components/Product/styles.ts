@@ -16,11 +16,12 @@ export const Card = styled.div<VariantProps>`
   flex-direction: column;
   height: 100%;
   padding: ${(props) => (props.$variant === 'perfil' ? '8px' : '0')};
+  border-radius: 8px;
 
   > img {
     width: 100%;
     height: 217px;
-    object-fit: cover;
+    object-fit: fill;
   }
 `
 
