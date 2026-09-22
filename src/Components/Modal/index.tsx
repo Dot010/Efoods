@@ -1,4 +1,6 @@
+import { useDispatch } from 'react-redux'
 import type { Prato } from '../../pages/Perfil/index'
+import { add, open } from '../../store/reducers/cart'
 import * as S from './styles'
 
 type Props = {
@@ -8,6 +10,8 @@ type Props = {
 }
 
 const Modal = ({ prato, isVisible, onClose }: Props) => {
+  const dispatch = useDispatch()
+
   if (!isVisible) return null
 
   const formataPreco = (preco: number) => {
@@ -15,6 +19,19 @@ const Modal = ({ prato, isVisible, onClose }: Props) => {
       style: 'currency',
       currency: 'BRL'
     }).format(preco)
+  }
+
+  const handleAddToCart = () => {
+    dispatch(add({
+      id: prato.id,
+      title: prato.nome,
+      category: '',
+      foto: prato.foto,
+      preco: prato.preco,
+      descricao: prato.descricao
+    }))
+    dispatch(open())
+    onClose()
   }
 
   return (
@@ -31,7 +48,7 @@ const Modal = ({ prato, isVisible, onClose }: Props) => {
           </S.Header>
           <S.Description>{prato.descricao}</S.Description>
           <S.Description>Serve: {prato.porcao}</S.Description>
-          <S.AddButton type="button">
+          <S.AddButton type="button" onClick={handleAddToCart}>
             Adicionar ao carrinho - {formataPreco(prato.preco)}
           </S.AddButton>
         </div>
