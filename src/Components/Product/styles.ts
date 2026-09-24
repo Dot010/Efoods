@@ -17,7 +17,6 @@ export const Card = styled.div<VariantProps>`
   height: 100%;
   padding: ${(props) => (props.$variant === 'perfil' ? '8px' : '0')};
   border-radius: 8px;
-  font-family: inherit;
 
   > img {
     width: 100%;
@@ -36,12 +35,11 @@ export const Infos = styled.div`
 
 export const Tag = styled.span`
   background-color: ${cores.salmao};
-  color: ${cores.branco};
+  color: ${cores.fundo};
   font-size: 12px;
   font-weight: bold;
   padding: 4px 6px;
   display: inline-block;
-  font-family: inherit;
 `
 
 export const ContainerConteudo = styled.div`
@@ -55,16 +53,13 @@ export const HeaderCard = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
 `
 
 export const Titulo = styled.h3<VariantProps>`
   font-size: 18px;
   font-weight: bold;
-  margin: 0;
-  font-family: inherit;
   color: ${(props) =>
-    props.$variant === 'perfil' ? cores.branco : cores.salmao};
+    props.$variant === 'perfil' ? cores.fundo : cores.salmao};
 `
 
 export const Rating = styled.div`
@@ -74,24 +69,22 @@ export const Rating = styled.div`
   font-size: 18px;
   font-weight: bold;
   color: ${cores.salmao};
-  font-family: inherit;
 `
 
 export const Descricao = styled.p<VariantProps>`
   font-size: 14px;
   line-height: 22px;
   margin-top: 16px;
-  margin-bottom: 8px;
-  font-family: inherit;
   color: ${(props) =>
-    props.$variant === 'perfil' ? cores.branco : cores.salmao};
+  props.$variant === 'perfil' ? cores.fundo : cores.salmao};
+    margin-bottom: 8px;
 `
 
 export const BotaoSaibaMais = styled.button<VariantProps>`
   background-color: ${(props) =>
-    props.$variant === 'perfil' ? cores.branco : cores.salmao};
+    props.$variant === 'perfil' ? cores.fundo : cores.salmao};
   color: ${(props) =>
-    props.$variant === 'perfil' ? cores.salmao : cores.branco};
+    props.$variant === 'perfil' ? cores.salmao : cores.fundo};
   font-size: 14px;
   font-weight: bold;
   padding: 4px 6px;
@@ -101,5 +94,4 @@ export const BotaoSaibaMais = styled.button<VariantProps>`
   width: ${(props) => (props.$variant === 'perfil' ? '100%' : 'auto')};
   align-self: ${(props) =>
     props.$variant === 'perfil' ? 'stretch' : 'flex-start'};
-  font-family: inherit;
 `

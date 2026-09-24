@@ -1,21 +1,26 @@
-
 import Banner from "../../Components/Banner"
 import ProductList, { type ProductType } from "../../Components/ProductList"
 import Footer from "../../Components/Footer"
 import { useGetRestaurantesQuery } from "../../services/api"
 import Loader from "../../Components/Loader"
+import styled from "styled-components";
+
+const ErrorState = styled.h3`
+  text-align: center;
+  margin-top: 50px;
+  color: #fff;
+`;
 
 const Home = () => {
   const { data: restaurantes, isLoading, isError } = useGetRestaurantesQuery()
 
   if (isLoading) {
-      return <Loader />
-    }
+    return <Loader />
+  }
 
-    if (isError || !restaurantes) {
-      return <h3 style={{ textAlign: 'center', marginTop: '50px', color: '#fff' }}>Erro ao carregar restaurantes.</h3>
-    }
-
+  if (isError || !restaurantes) {
+    return <ErrorState>Erro ao carregar restaurantes.</ErrorState>;
+  }
 
   const products: ProductType[] = restaurantes.map((restaurante) => ({
     id: restaurante.id,
@@ -24,7 +29,9 @@ const Home = () => {
     descricao: restaurante.descricao,
     foto: restaurante.capa,
     rating: restaurante.avaliacao,
-    infos: restaurante.destacado ? ['Destaque da Semana', restaurante.tipo] : [restaurante.tipo]
+    infos: restaurante.destacado
+      ? ["Destaque da Semana", restaurante.tipo]
+      : [restaurante.tipo],
   }))
 
   return (

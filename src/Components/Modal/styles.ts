@@ -28,7 +28,7 @@ export const ModalContent = styled.div`
   max-width: 1024px;
   width: 100%;
   background-color: ${cores.salmao};
-  color: ${cores.branco};
+  color: ${cores.fundo};
   padding: 32px;
   display: flex;
   gap: 24px;
@@ -73,7 +73,7 @@ export const Header = styled.div`
 export const CloseButton = styled.button`
   background: transparent;
   border: none;
-  color: ${cores.branco};
+  color: ${cores.fundo};
   font-size: 24px;
   cursor: pointer;
   line-height: 1;
@@ -89,7 +89,7 @@ export const Description = styled.p`
 `
 
 export const AddButton = styled.button`
-  background-color: ${cores.branco};
+  background-color: ${cores.fundo};
   color: ${cores.salmao};
   border: none;
   padding: 4px 8px;

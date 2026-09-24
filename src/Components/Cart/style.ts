@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import lixeira from "../../assets/images/lixeira.png";
+import { cores } from "../styles";
 
 // Overlay escuro de fundo
 export const Overlay = styled.div`
@@ -14,6 +15,7 @@ export const Overlay = styled.div`
 
 // Contentor principal da barra lateral
 export const CartContainer = styled.div`
+
   display: none;
   position: fixed;
   width: 100%;
@@ -30,22 +32,22 @@ export const CartContainer = styled.div`
 
 // Painel lateral
 export const Sidebar = styled.aside`
-  background-color: #e66767;
+  background-color: ${cores.salmao};
   z-index: 1;
   padding: 32px 16px;
   max-width: 360px;
   width: 100%;
-  overflow-y: auto;
+  overflow-y: auto; 
 
   h2 {
-    color: #ffebd9;
+    color: ${cores.fundo};
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 16px;
   }
 
   p {
-    color: #ffebd9;
+    color: ${cores.fundo};
     font-size: 14px;
     line-height: 22px;
     margin-bottom: 16px;
@@ -57,16 +59,17 @@ export const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
+  
 
   label {
-    color: #ffebd9;
+    color: ${cores.fundo};
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 8px;
   }
 
   input {
-    background-color: #ffebd9;
+    background-color: ${cores.fundo};
     border: none;
     height: 32px;
     padding: 0 8px;
@@ -79,7 +82,7 @@ export const InputGroup = styled.div`
   }
 
   small {
-    color: #ffffff;
+    color: ${cores.fundo};
     margin-top: 4px;
     font-size: 12px;
   }
@@ -108,7 +111,7 @@ export const ButtonGroup = styled.div`
 export const CartItem = styled.li`
   display: flex;
   position: relative;
-  background-color: #ffebd9;
+  background-color: ${cores.fundo};
   padding: 8px;
   margin-bottom: 16px;
   width: 100%;
@@ -121,14 +124,14 @@ export const CartItem = styled.li`
   }
 
   h3 {
-    color: #e66767;
+    color: ${cores.salmao};
     font-size: 18px;
     font-weight: 900;
     margin-bottom: 16px;
   }
 
   span {
-    color: #e66767;
+    color: ${cores.salmao};
     font-size: 14px;
     font-weight: 400;
     display: block;
@@ -156,12 +159,12 @@ export const Prices = styled.div`
   margin-bottom: 16px;
   font-size: 14px;
   font-weight: bold;
-  color: #ffebd9;
+  color: ${cores.fundo};
 `;
 
 export const BotaoFinalizar = styled.button`
-  background-color: #ffebd9;
-  color: #e66767;
+  background-color: ${cores.fundo};
+  color: ${cores.salmao};
   border: none;
   width: 100%;
   height: 24px;
