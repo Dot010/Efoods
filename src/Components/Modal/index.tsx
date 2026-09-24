@@ -1,6 +1,7 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import type { Prato } from '../../pages/Perfil/index'
 import { add, open } from '../../store/reducers/cart'
+import type { RootState } from '../../store'
 import * as S from './styles'
 
 type Props = {
@@ -11,6 +12,7 @@ type Props = {
 
 const Modal = ({ prato, isVisible, onClose }: Props) => {
   const dispatch = useDispatch()
+  const cartItems = useSelector((state: RootState) => state.cart.items)
 
   if (!isVisible) return null
 
@@ -22,14 +24,21 @@ const Modal = ({ prato, isVisible, onClose }: Props) => {
   }
 
   const handleAddToCart = () => {
-    dispatch(add({
-      id: prato.id,
-      title: prato.nome,
-      category: '',
-      foto: prato.foto,
-      preco: prato.preco,
-      descricao: prato.descricao
-    }))
+    const isAlreadyInCart = cartItems.some((item) => item.id === prato.id)
+
+    if (isAlreadyInCart) {
+      alert('Este item ja esta no carrinho!')
+    } else {
+      dispatch(add({
+        id: prato.id,
+        title: prato.nome,
+        category: '',
+        foto: prato.foto,
+        preco: prato.preco,
+        descricao: prato.descricao
+      }))
+    }
+
     dispatch(open())
     onClose()
   }

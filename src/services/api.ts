@@ -19,6 +19,47 @@ export type Restaurante = {
   capa: string
   cardapio: Prato[]
 }
+type PurchaseResponse = {
+  orderId: string
+};
+
+type PurchasePayload = {
+  products: Product[]
+  billing: {
+    name: string
+  }
+  delivery: {
+    receiver: string
+    address: {
+      description: string
+      city: string
+      zipCode: string
+      number: number
+      complement?: string
+    }
+  }
+  payment: {
+    card: {
+      active: boolean
+      owner?: {
+        name: string
+      }
+      name?: string
+      number?: string
+      expires?: {
+        month: number
+        year: number
+      }
+      code?: number
+    }
+    installments: number
+  }
+}
+
+type Product = {
+  id: number
+  price: number
+}
 
 export const api = createApi({
   reducerPath: 'api',
@@ -30,8 +71,16 @@ export const api = createApi({
     }),
     getRestaurante: builder.query<Restaurante, string>({
       query: (id) => `restaurantes/${id}`
+    }),
+    purchase: builder.mutation<PurchaseResponse, PurchasePayload>({
+      query: (payload) => ({
+        url: 'checkout',
+        method: 'POST',
+        body: payload
+      })
     })
   })
 })
 
-export const { useGetRestaurantesQuery, useGetRestauranteQuery } = api
+
+export const { useGetRestaurantesQuery, useGetRestauranteQuery, usePurchaseMutation } = api
