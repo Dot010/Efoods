@@ -76,8 +76,12 @@ const Cart = () => {
         .required("O nome completo é obrigatório"),
       address: Yup.string().required("O endereço é obrigatório"),
       city: Yup.string().required("A cidade é obrigatória"),
-      zip: Yup.string().required("O CEP é obrigatório"),
-      number: Yup.string().required("O número é obrigatório"),
+    zip: Yup.string()
+  .matches(/^\d{5}-?\d{3}$/, "O CEP deve ter 8 dígitos")
+  .required("O CEP é obrigatório"),
+    number: Yup.string()
+        .matches(/^\d+$/, "Use só números")
+        .required("O número é obrigatório"),
       complement: Yup.string(),
       cardName:
         step === "payment"
@@ -85,7 +89,9 @@ const Cart = () => {
           : Yup.string(),
       cardNumber:
         step === "payment"
-          ? Yup.string().required("O número do cartão é obrigatório")
+              ? Yup.string()
+            .matches(/^(\d{4} ?){3}\d{4}$/, "O cartão deve ter 16 dígitos")
+            .required("O número do cartão é obrigatório")
           : Yup.string(),
       cardCVV:
         step === "payment"
